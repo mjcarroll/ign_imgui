@@ -3,8 +3,8 @@ cmake_minimum_required(VERSION 3.5.1 FATAL_ERROR)
 project(ign-imgui VERSION 0.0.1)
 
 find_package(ignition-cmake2 REQUIRED)
-ign_find_package(ignition-transport7 REQUIRED)
-ign_find_package(ignition-msgs4 REQUIRED)
+ign_find_package(ignition-transport9 REQUIRED)
+ign_find_package(ignition-msgs6 REQUIRED)
 ign_find_package(ignition-common3 REQUIRED)
 
 find_package(glfw3 REQUIRED)
@@ -37,8 +37,8 @@ target_compile_definitions(ign_imgui
 target_link_libraries(ign_imgui
   PRIVATE
   ignition-common3::ignition-common3
-  ignition-transport7::ignition-transport7
-  ignition-msgs4::ignition-msgs4
+  ignition-transport9::ignition-transport9
+  ignition-msgs6::ignition-msgs6
   glfw
   ${OPENGL_gl_LIBRARY}
   ${OPENGL_glu_LIBRARY}
