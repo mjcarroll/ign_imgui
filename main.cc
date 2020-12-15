@@ -15,6 +15,7 @@
  *
  */
 
+#include <cmath>
 
 #include <ignition/msgs.hh>
 #include <ignition/common/Console.hh>
@@ -111,7 +112,7 @@ int main(int _argc, char** _argv)
 
       msg_z = _msg;
 
-      if (animate)
+      if (animate && std::isfinite(rtf))
       {
         stats.InsertData(rtf);
         hist.InsertData(rtf);
@@ -177,9 +178,10 @@ int main(int _argc, char** _argv)
       ImGui::Separator();
       hist.PlotHistogram("RTF Histogram", ImVec2(400, 400));
 
-      if (ImGui::Button("Reset Histogram"))
+      if (ImGui::Button("Reset"))
       {
         hist.Reset();
+        stats.Reset();
       }
 
       // Statistics
@@ -189,10 +191,6 @@ int main(int _argc, char** _argv)
       ImGui::Text("Var: %f", stats.Map()["var"]);
       ImGui::Text("Max: %f", stats.Map()["max"]);
       ImGui::Text("Min: %f", stats.Map()["min"]);
-      if (ImGui::Button("Reset Statistics"))
-      {
-        stats.Reset();
-      }
 
       ImGui::Separator();
 
